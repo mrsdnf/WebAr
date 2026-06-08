@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <title>WebAR Magic Card — Jabra Sound+ App</title>
+    <title>WebAR Story — Jabra Sound Plus</title>
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     <style>
@@ -16,27 +16,38 @@
   <body>
     <a-scene embedded arjs="sourceType: webcam; patternRatio: 0.5; debugUIEnabled: false;" vr-mode-ui="enabled: false">
       <a-assets>
-        <video id="clip" src="assets/clip.mp4" preload="auto" loop autoplay muted playsinline webkit-playsinline crossorigin="anonymous"></video>
+        <video id="clip1" src="assets/clip.mp4" preload="auto" loop autoplay muted playsinline webkit-playsinline crossorigin="anonymous"></video>
+        <video id="clip2" src="assets/clip.mp4" preload="auto" loop autoplay muted playsinline webkit-playsinline crossorigin="anonymous"></video>
+        <video id="clip3" src="assets/clip.mp4" preload="auto" loop autoplay muted playsinline webkit-playsinline crossorigin="anonymous"></video>
       </a-assets>
 
-      <!-- Custom "Jabra Sound+ App" QR-style pattern marker. Print marker/jabra-marker.png as the card. -->
-      <a-marker type="pattern" url="marker/jabra.patt">
-        <!-- Video lies flat on the card (source is landscape 720x434 ~ 1.66:1). -->
-        <a-video src="#clip" width="90" height="54.3" position="0 0.01 0" rotation="-90 0 0"></a-video>
+      <!-- Marker 1: J -->
+      <a-marker type="pattern" url="marker/J.patt">
+        <a-video src="#clip1" width="9" height="5.43" position="0 0.01 0" rotation="-90 0 0"></a-video>
+      </a-marker>
+
+      <!-- Marker 2: S -->
+      <a-marker type="pattern" url="marker/S.patt">
+        <a-video src="#clip2" width="9" height="5.43" position="0 0.01 0" rotation="-90 0 0"></a-video>
+      </a-marker>
+
+      <!-- Marker 3: P -->
+      <a-marker type="pattern" url="marker/P.patt">
+        <a-video src="#clip3" width="9" height="5.43" position="0 0.01 0" rotation="-90 0 0"></a-video>
       </a-marker>
 
       <a-entity camera></a-entity>
     </a-scene>
-    <div class="info">Point your camera at the Jabra Sound+ card</div>
+    <div class="info">Scan to open, then aim at the J, S and P markers</div>
 
     <script>
-      // Nudge mobile browsers (especially iOS) to actually start the muted video.
       window.addEventListener('load', function () {
-        var v = document.querySelector('#clip');
-        var kick = function () { if (v) { v.play().catch(function () {}); } };
+        var vids = [document.querySelector('#clip1'),
+                    document.querySelector('#clip2'),
+                    document.querySelector('#clip3')];
+        var kick = function () { vids.forEach(function (v) { if (v) v.play().catch(function () {}); }); };
         document.body.addEventListener('click', kick);
-        var scene = document.querySelector('a-scene');
-        if (scene) scene.addEventListener('markerFound', kick);
+        document.querySelectorAll('a-marker').forEach(function (m) { m.addEventListener('markerFound', kick); });
       });
     </script>
   </body>
