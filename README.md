@@ -6,7 +6,7 @@ The AR content is the video at `assets/clip.mp4`, which plays flat on the card w
 
 ## Print the marker
 
-Print `marker/jabra-marker.png` — now a full **AR card**: a call-to-action line ("Point your camera here to discover the extra dimensions you get with the Jabra Sound Plus App") printed above the bordered "Jabra Sound Plus App" QR-style tracking marker. Print the **whole card** (caption + marker square) on white paper or card, sized so the marker square is roughly **5–8 cm**. Keep the marker square's solid **black border fully intact** with a white margin around it — do not crop it; the border is what the tracker locks onto. The caption is above the square and does not affect tracking. That printed sheet is "the card."
+Print `marker/jabra-marker.png` — now a full **AR card**: a call-to-action line ("Point your camera here to discover the extra dimensions you get with the Jabra Sound Plus App") printed above the bordered tracking marker. The tracking image is now a large, bold **"J+"** — kept deliberately simple so it tracks reliably (the old multi-line text didn't track). Print the **whole card** (caption + marker square) on white paper or card, sized so the marker square is roughly **5–8 cm**. Keep the marker square's solid **black border fully intact** with a white margin around it — do not crop it; the border is what the tracker locks onto. The caption is above the square and does not affect tracking. That printed sheet is "the card."
 
 ## Test locally (desktop webcam)
 
