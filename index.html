@@ -17,8 +17,8 @@
     <a-scene embedded arjs="sourceType: webcam; patternRatio: 0.5; debugUIEnabled: false;" vr-mode-ui="enabled: false">
       <a-assets>
         <video id="clip1" src="assets/clip.mp4" preload="auto" loop autoplay muted playsinline webkit-playsinline crossorigin="anonymous"></video>
-        <video id="clip2" src="assets/clip.mp4" preload="auto" loop autoplay muted playsinline webkit-playsinline crossorigin="anonymous"></video>
-        <video id="clip3" src="assets/clip.mp4" preload="auto" loop autoplay muted playsinline webkit-playsinline crossorigin="anonymous"></video>
+        <video id="clip2" src="assets/clip2.mp4" preload="auto" loop autoplay muted playsinline webkit-playsinline crossorigin="anonymous"></video>
+        <video id="clip3" src="assets/clip3.mp4" preload="auto" loop autoplay muted playsinline webkit-playsinline crossorigin="anonymous"></video>
       </a-assets>
 
       <!-- Marker 1: J -->
@@ -28,12 +28,12 @@
 
       <!-- Marker 2: S -->
       <a-marker type="pattern" url="marker/S.patt">
-        <a-video src="#clip2" width="9" height="5.43" position="0 0.01 0" rotation="-90 0 0"></a-video>
+        <a-video src="#clip2" width="9" height="15.28" position="0 0.01 0" rotation="-90 0 0"></a-video>
       </a-marker>
 
       <!-- Marker 3: P -->
       <a-marker type="pattern" url="marker/P.patt">
-        <a-video src="#clip3" width="9" height="5.43" position="0 0.01 0" rotation="-90 0 0"></a-video>
+        <a-video src="#clip3" width="9" height="15.28" position="0 0.01 0" rotation="-90 0 0"></a-video>
       </a-marker>
 
       <a-entity camera></a-entity>
