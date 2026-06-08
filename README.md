@@ -1,10 +1,12 @@
 # WebAR Magic Card
 
-A WebAR "magic card": point a phone browser at a printed Hiro marker and a rotating 3D cube appears floating above it. Marker-based AR using [AR.js](https://github.com/AR-js-org/AR.js) + [A-Frame](https://aframe.io/) — runs entirely in the browser, no app install required.
+A WebAR "magic card": point a phone browser at a printed marker and a video plays on it. Marker-based AR using [AR.js](https://github.com/AR-js-org/AR.js) + [A-Frame](https://aframe.io/) — runs entirely in the browser, no app install required.
+
+The AR content is the video at `assets/clip.mp4`, which plays flat on the card when the marker is detected.
 
 ## Print the marker
 
-Print `marker/hiro.png` at roughly **5–8 cm square**, on white paper or card. Keep the solid **black border fully intact** — do not crop it; the border is what the tracker locks onto. That printed sheet is "the card."
+Print `marker/jabra-marker.png` — the custom "Jabra Sound+ App" QR-style pattern marker — at roughly **5–8 cm square**, on white paper or card. Keep the solid **black border fully intact** — do not crop it; the border is what the tracker locks onto. That printed sheet is "the card."
 
 ## Test locally (desktop webcam)
 
@@ -27,25 +29,25 @@ Browsers only grant camera access over **HTTPS**, so a plain `http://<your-ip>:8
 - Use good, even lighting and hold the marker steady.
 - If tracking is jittery, print the marker **larger** and keep the **black border clean** (no smudges, no glare, no fold across it).
 
-## Optional: play a video instead of the cube
+## The video on the card
 
-Drop a short clip at `assets/clip.mp4`, then **uncomment** both the `<a-video>` block inside `<a-marker>` and the `<a-assets>` block in `index.html`.
+The card plays the clip at `assets/clip.mp4` on a flat plane via the `<a-video>` element inside `<a-marker>` in `index.html`.
 
-On iOS the video must stay `muted` and `playsinline`, and may need a screen tap to start (mobile autoplay restriction).
+On iOS the video must stay `muted` and `playsinline`, and may need a screen tap to start (mobile autoplay restriction); `index.html` also kicks playback on `markerFound`.
 
 ## Use your own design on the card (custom marker)
 
-To put your own artwork on the card instead of the default Hiro pattern:
+This project uses a custom pattern marker (`marker/jabra.patt`, printed as `marker/jabra-marker.png`). To put your own artwork on the card instead:
 
 1. Open the AR.js Marker Training generator: <https://ar-js-org.github.io/AR.js/three.js/examples/marker-training/examples/generator.html>
 2. Upload your image to generate a `.patt` file and save it under `marker/` (e.g. `marker/custom.patt`).
-3. In `index.html`, change the marker tag from `preset="hiro"` to:
+3. In `index.html`, point the marker tag at your pattern:
 
    ```html
    <a-marker type="pattern" url="marker/custom.patt">
    ```
 
-Note that custom markers still need a solid black square border to track well.
+Note that custom markers still need a solid black square border to track well. (The old `marker/hiro.png` is left in the repo but is no longer the active marker.)
 
 ## Future upgrade note
 
