@@ -17,11 +17,14 @@
     <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;" vr-mode-ui="enabled: false">
       <!-- The QR-code-style Hiro marker. Print marker/hiro.png; that sheet IS the card. -->
       <a-marker preset="hiro">
-        <!-- Rotating + bobbing cube anchored above the card -->
-        <a-box position="0 0.5 0" material="color: #4CC3D9;"
-               animation="property: rotation; to: 0 360 0; loop: true; dur: 4000; easing: linear"
-               animation__bob="property: position; to: 0 0.8 0; dir: alternate; loop: true; dur: 1500; easing: easeInOutSine">
-        </a-box>
+        <!-- Smaller cube so it reads as a floating object, not a wall of color.
+             A second wireframe box shows the edges so the 3D rotation is obvious. -->
+        <a-entity position="0 0.5 0"
+                  animation="property: rotation; to: 0 360 0; loop: true; dur: 4000; easing: linear"
+                  animation__bob="property: position; to: 0 0.7 0; dir: alternate; loop: true; dur: 1500; easing: easeInOutSine">
+          <a-box scale="0.5 0.5 0.5" material="color: #4CC3D9; metalness: 0.1; roughness: 0.6"></a-box>
+          <a-box scale="0.52 0.52 0.52" material="color: #0b3d4d; wireframe: true; wireframeLinewidth: 2"></a-box>
+        </a-entity>
 
         <!-- OPTIONAL VIDEO: drop a clip at assets/clip.mp4, then uncomment this block
              and the <a-assets> below. On iOS the video must be muted and may need a tap to start.
